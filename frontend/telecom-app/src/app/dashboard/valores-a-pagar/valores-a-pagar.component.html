@@ -1,0 +1,35 @@
+<h2>Valores a Pagar de {{ nombreUsuario }}</h2>
+<p>Visualiza tus montos pendientes y pagos realizados.</p>
+
+<ul *ngIf="facturas.length > 0; else sinDatos" class="list-group">
+  <li *ngFor="let factura of facturas" class="list-group-item">
+    <p><strong>Factura #</strong> {{ factura.id_factura }}</p>
+    <p><strong>Fecha de Emisión:</strong> {{ factura.fecha_emision | date: 'dd/MM/yyyy' }}</p>
+    <p><strong>Fecha de Vencimiento:</strong> {{ factura.fecha_vencimiento | date: 'dd/MM/yyyy' }}</p>
+    <p><strong>Total:</strong> {{ factura.total | currency:'USD' }}</p>
+    <p><strong>Estado:</strong>
+      <span [class.text-success]="factura.estado_pago === 'Pagado'" [class.text-danger]="factura.estado_pago === 'Pendiente'">
+        {{ factura.estado_pago }}
+      </span>
+    </p>
+    
+    <button class="btn btn-sm btn-outline-primary" (click)="toggleDetalle(factura.id_factura)">
+      {{ facturasAbiertas.has(factura.id_factura) ? 'Ocultar Detalle' : 'Ver Detalle' }}
+    </button>
+
+    <div *ngIf="facturasAbiertas.has(factura.id_factura)">
+      <hr />
+      <h5>Detalle:</h5>
+      <ul class="list-group">
+        <li *ngFor="let item of detallesFactura[factura.id_factura]" class="list-group-item">
+          <p>{{ item.descripcion }}</p>
+          <p><strong>Monto:</strong> {{ item.monto | currency:'USD' }}</p>
+        </li>
+      </ul>
+    </div>
+  </li>
+</ul>
+
+<ng-template #sinDatos>
+  <p>No hay facturas disponibles.</p>
+</ng-template>

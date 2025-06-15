@@ -1,0 +1,37 @@
+
+summary: Obtener factura por ID
+tags:
+  - Facturas
+parameters:
+  - name: id_factura
+    in: path
+    description: ID de la factura
+    required: true
+    type: integer
+    format: int32
+responses:
+  200:
+    description: Factura encontrada
+    schema:
+      $ref: '#/definitions/Factura'
+  404:
+    description: Factura no encontrada
+definitions:
+  Factura:
+    type: object
+    properties:
+      id_factura:
+        type: integer
+      id_usuario:
+        type: integer
+      fecha_emision:
+        type: string
+        format: date-time
+      fecha_vencimiento:
+        type: string
+        format: date-time
+      total:
+        type: number
+        format: float
+      estado_pago:
+        type: string

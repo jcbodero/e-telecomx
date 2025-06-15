@@ -1,0 +1,42 @@
+post:
+  summary: Registrar un nuevo consumo de datos
+  description: Inserta un nuevo registro de consumo de datos usando un procedimiento almacenado.
+  tags:
+  - Consumos
+  parameters:
+    - in: body
+      name: body
+      required: true
+      schema:
+        type: object
+        required:
+          - id_usuario
+          - id_servicio
+          - id_paquete
+          - fecha
+          - consumo_mb
+          - limite_mb
+        properties:
+          id_usuario:
+            type: integer
+            example: 3
+          id_servicio:
+            type: integer
+            example: 1
+          fecha:
+            type: string
+            format: date-time
+            example: "2025-06-14T00:00:00"
+          consumo_mb:
+            type: number
+            format: float
+            example: 500.25
+          limite_mb:
+            type: number
+            format: float
+            example: 1024.00
+  responses:
+    201:
+      description: Consumo registrado exitosamente
+    400:
+      description: Error en los datos enviados

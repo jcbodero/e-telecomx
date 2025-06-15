@@ -1,0 +1,56 @@
+version: "3.9"
+
+services:
+  gateway:
+    build: ./backend/gateway
+    ports:
+      - "8080:8080"
+    depends_on:
+      - ms_usuarios
+      - ms_facturas
+      - ms_consumos
+    restart: always
+
+  ms_usuarios:
+    build: ./backend/servicios/ms-usuarios
+    ports:
+      - "5001:5001"
+    restart: always
+  ms_facturas:
+    build: ./backend/servicios/ms-facturas
+    ports:
+      - "5002:5002"
+    restart: always
+  ms_consumos:
+    build: ./backend/servicios/ms-consumo
+    ports:
+      - "5003:5003"
+    restart: always
+
+
+  angular-app:
+    build: ./frontend/telecom-app
+    container_name: angular-app
+    ports:
+      - "4200:4200"
+    restart: always
+
+  # simulador:
+  #   build: ./backend/infraestructura/simulador_usuarios
+  #   container_name: simulador-consumo
+  #   restart: always
+
+  mysql:
+    image: mysql:8.0
+    container_name: telcox_mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: rootpass
+      MYSQL_DATABASE: telcox_db
+      MYSQL_USER: telcox_user
+      MYSQL_PASSWORD: telcox_pass
+    volumes:
+      - ./backend/infraestructura/data:/var/lib/mysql           # Persistencia de datos
+      - ./backend/infraestructura/sistema.sql:/docker-entrypoint-initdb.d/sistema.sql  # Script inicial
+    ports:
+      - "3306:3306"
+    restart: always

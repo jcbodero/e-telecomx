@@ -1,0 +1,18 @@
+<h2>Consumo en Tiempo Real de {{ nombreCompleto }}</h2>
+
+<ul *ngIf="paquetes.length > 0; else cargando" class="list-group">
+  <li *ngFor="let paquete of paquetes" class="list-group-item">
+    <h5>{{ paquete.nombre_paquete }} - Total a Pagar: ${{ paquete.total_a_pagar  }}</h5>
+    <ul>
+      <li *ngFor="let servicio of paquete.servicios">
+        <strong>Servicio:</strong> {{ servicio.nombre_servicio }},
+        <strong>Consumo:</strong> {{ servicio.consumo_mb }} MB,
+        <strong>Precio:</strong> ${{ servicio.precio_paquete }}
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<ng-template #cargando>
+  <p>Cargando datos...</p>
+</ng-template>

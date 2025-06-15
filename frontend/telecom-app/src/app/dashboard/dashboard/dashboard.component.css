@@ -1,0 +1,10 @@
+.menu-lateral {
+    min-height: 100vh; /* altura total de la pantalla */
+    background-color: #f0f0f0; /* gris claro */
+    padding-top: 15px;
+    border-right: 1px solid #ccc;
+}
+   
+.rounded-circle{
+    border-radius: 50%; width: 40px; height: 40px; object-fit: cover;
+  } 

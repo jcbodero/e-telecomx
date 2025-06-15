@@ -1,0 +1,54 @@
+
+tags:
+  - Usuarios
+description: Crea un usuario en la base de datos con los datos proporcionados.
+parameters:
+  - in: body
+    name: body
+    description: Datos del nuevo usuario
+    required: true
+    schema:
+      type: object
+      required:
+        - nombre
+        - apellido
+        - email
+        - contraseña_hash
+        - estado_cuenta
+      properties:
+        nombre:
+          type: string
+          example: Juan
+        apellido:
+          type: string
+          example: Pérez
+        email:
+          type: string
+          format: email
+          example: juan.perez@example.com
+        contraseña_hash:
+          type: string
+          example: $2b$12$EjemploHashDePassword
+        estado_cuenta:
+          type: string
+          example: activo
+responses:
+  201:
+    description: Usuario creado correctamente
+    schema:
+      type: object
+      properties:
+        id_usuario:
+          type: integer
+          example: 123
+        mensaje:
+          type: string
+          example: Usuario creado exitosamente
+  400:
+    description: Datos inválidos en la solicitud
+    schema:
+      type: object
+      properties:
+        mensaje:
+          type: string
+          example: El campo 'email' es obligatorio

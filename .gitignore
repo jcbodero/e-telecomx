@@ -1,0 +1,13 @@
+# Ignorar carpetas de datos de MySQL
+backend/infraestructura/data/
+*.sock
+*.pid
+*.cnf
+*.ibd
+*.frm
+*.err
+*.MYI
+*.MYD
+*.log
+*.index
+*.bin

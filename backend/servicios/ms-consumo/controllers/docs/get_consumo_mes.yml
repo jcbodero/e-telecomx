@@ -1,0 +1,46 @@
+get:
+  summary: Obtener consumo de datos por usuario y mes
+  tags:
+  - Consumos
+  description: Devuelve una lista de registros de consumo de datos para un usuario específico en un año y mes determinados.
+  parameters:
+    - in: query
+      name: id_usuario
+      required: true
+      type: integer
+      description: ID del usuario
+    - in: query
+      name: anio
+      required: true
+      type: integer
+      description: Año del consumo
+    - in: query
+      name: mes
+      required: true
+      type: integer
+      description: Mes del consumo (1-12)
+  responses:
+    200:
+      description: Lista de consumos
+      schema:
+        type: array
+        items:
+          type: object
+          properties:
+            id_consumo:
+              type: integer
+            id_usuario:
+              type: integer
+            id_servicio:
+              type: integer
+            fecha:
+              type: string
+              format: date-time
+            consumo_mb:
+              type: number
+              format: float
+            limite_mb:
+              type: number
+              format: float
+    400:
+      description: Faltan parámetros requeridos

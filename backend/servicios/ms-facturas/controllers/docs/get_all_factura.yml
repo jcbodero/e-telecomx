@@ -1,0 +1,30 @@
+
+summary: Obtener todas las facturas
+tags:
+  - Facturas
+responses:
+  200:
+    description: Lista de facturas
+    schema:
+      type: array
+      items:
+        $ref: '#/definitions/Factura'
+definitions:
+  Factura:
+    type: object
+    properties:
+      id_factura:
+        type: integer
+      id_usuario:
+        type: integer
+      fecha_emision:
+        type: string
+        format: date-time
+      fecha_vencimiento:
+        type: string
+        format: date-time
+      total:
+        type: number
+        format: float
+      estado_pago:
+        type: string

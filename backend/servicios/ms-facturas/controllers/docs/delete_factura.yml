@@ -1,0 +1,21 @@
+
+summary: Eliminar una factura
+tags:
+  - Facturas
+parameters:
+  - name: id_factura
+    in: path
+    description: ID de la factura a eliminar
+    required: true
+    type: integer
+    format: int32
+responses:
+  200:
+    description: Factura eliminada correctamente
+    schema:
+      type: object
+      properties:
+        mensaje:
+          type: string
+  404:
+    description: Factura no encontrada

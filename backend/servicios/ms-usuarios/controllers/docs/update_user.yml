@@ -1,0 +1,52 @@
+
+tags:
+  - Usuarios
+swagger: "2.0"
+info:
+  title: Actualizar Usuario
+  description: Actualiza los datos de un usuario existente mediante su ID.
+  version: "1.0.0"
+consumes:
+  - application/json
+produces:
+  - application/json
+parameters:
+  - name: id_usuario
+    in: path
+    required: true
+    type: integer
+    description: ID del usuario a actualizar
+  - in: body
+    name: cuerpo
+    description: Datos actualizados del usuario
+    required: true
+    schema:
+      type: object
+      properties:
+        nombre:
+          type: string
+          example: Juan
+        apellido:
+          type: string
+          example: Pérez
+        email:
+          type: string
+          format: email
+          example: juan.perez@example.com
+        estado_cuenta:
+          type: string
+          example: activo
+        contraseña_hash:
+          type: string
+          example: $2b$12$EjemploHashDePassword
+responses:
+  200:
+    description: Usuario actualizado correctamente
+    schema:
+      type: object
+      properties:
+        mensaje:
+          type: string
+          example: Usuario actualizado
+  400:
+    description: Datos inválidos

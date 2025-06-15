@@ -1,0 +1,55 @@
+tags:
+  - Usuarios
+description: Busca un usuario por su correo electrónico.
+parameters:
+  - in: body
+    name: body
+    description: Email del usuario a buscar
+    required: true
+    schema:
+      type: object
+      required:
+        - email
+      properties:
+        email:
+          type: string
+          format: email
+          example: juan.perez@example.com
+responses:
+  200:
+    description: Usuario encontrado exitosamente
+    schema:
+      type: object
+      properties:
+        id_usuario:
+          type: integer
+          example: 123
+        nombre:
+          type: string
+          example: Juan
+        apellido:
+          type: string
+          example: Pérez
+        email:
+          type: string
+          format: email
+          example: juan.perez@example.com
+        estado_cuenta:
+          type: string
+          example: activo
+  400:
+    description: El campo email es obligatorio
+    schema:
+      type: object
+      properties:
+        error:
+          type: string
+          example: El campo email es requerido
+  404:
+    description: Usuario no encontrado
+    schema:
+      type: object
+      properties:
+        error:
+          type: string
+          example: Usuario no encontrado

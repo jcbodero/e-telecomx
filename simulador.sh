@@ -1,0 +1,1 @@
+cd backend/infraestructura/simulador_usuarios && bash run.sh

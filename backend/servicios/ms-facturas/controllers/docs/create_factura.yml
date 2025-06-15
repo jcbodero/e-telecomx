@@ -1,0 +1,44 @@
+
+summary: Crear una nueva factura
+tags:
+  - Facturas
+parameters:
+  - in: body
+    name: factura
+    description: Datos para crear la factura
+    required: true
+    schema:
+      $ref: '#/definitions/FacturaInput'
+responses:
+  201:
+    description: Factura creada con éxito
+    schema:
+      type: object
+      properties:
+        id_factura:
+          type: integer
+  400:
+    description: Error en la solicitud
+definitions:
+  FacturaInput:
+    type: object
+    required:
+      - id_usuario
+      - fecha_emision
+      - fecha_vencimiento
+      - total
+      - estado_pago
+    properties:
+      id_usuario:
+        type: integer
+      fecha_emision:
+        type: string
+        format: date-time
+      fecha_vencimiento:
+        type: string
+        format: date-time
+      total:
+        type: number
+        format: float
+      estado_pago:
+        type: string

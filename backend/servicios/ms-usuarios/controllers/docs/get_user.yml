@@ -1,0 +1,50 @@
+
+tags:
+  - Usuarios
+swagger: "2.0"
+info:
+  title: Obtener Usuario
+  description: Devuelve los datos de un usuario específico según su ID.
+  version: "1.0.0"
+produces:
+  - application/json
+parameters:
+  - name: id_usuario
+    in: path
+    type: integer
+    required: true
+    description: ID del usuario a obtener
+responses:
+  200:
+    description: Usuario encontrado
+    schema:
+      type: object
+      properties:
+        id_usuario:
+          type: integer
+          example: 1
+        nombre:
+          type: string
+          example: Juan
+        apellido:
+          type: string
+          example: Pérez
+        email:
+          type: string
+          format: email
+          example: juan.perez@example.com
+        estado_cuenta:
+          type: string
+          example: activo
+        fecha_registro:
+          type: string
+          format: date-time
+          example: '2025-06-14T20:00:00Z'
+  404:
+    description: Usuario no encontrado
+    schema:
+      type: object
+      properties:
+        error:
+          type: string
+          example: Usuario no encontrado

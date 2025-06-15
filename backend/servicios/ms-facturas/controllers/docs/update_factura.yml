@@ -1,0 +1,52 @@
+
+summary: Actualizar una factura existente
+tags:
+  - Facturas
+parameters:
+  - name: id_factura
+    in: path
+    description: ID de la factura a actualizar
+    required: true
+    type: integer
+    format: int32
+  - in: body
+    name: factura
+    description: Datos para actualizar la factura
+    required: true
+    schema:
+      $ref: '#/definitions/FacturaInput'
+responses:
+  200:
+    description: Factura actualizada correctamente
+    schema:
+      type: object
+      properties:
+        mensaje:
+          type: string
+  400:
+    description: Error en la solicitud
+  404:
+    description: Factura no encontrada
+definitions:
+  FacturaInput:
+    type: object
+    required:
+      - id_usuario
+      - fecha_emision
+      - fecha_vencimiento
+      - total
+      - estado_pago
+    properties:
+      id_usuario:
+        type: integer
+      fecha_emision:
+        type: string
+        format: date-time
+      fecha_vencimiento:
+        type: string
+        format: date-time
+      total:
+        type: number
+        format: float
+      estado_pago:
+        type: string

@@ -1,0 +1,33 @@
+
+tags:
+  - Usuarios
+swagger: "2.0"
+info:
+  title: Eliminar Usuario
+  description: Elimina un usuario específico por su ID.
+  version: "1.0.0"
+produces:
+  - application/json
+parameters:
+  - name: id_usuario
+    in: path
+    required: true
+    type: integer
+    description: ID del usuario a eliminar
+responses:
+  200:
+    description: Usuario eliminado correctamente
+    schema:
+      type: object
+      properties:
+        mensaje:
+          type: string
+          example: Usuario eliminado
+  404:
+    description: Usuario no encontrado
+    schema:
+      type: object
+      properties:
+        error:
+          type: string
+          example: Usuario no encontrado
