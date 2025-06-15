@@ -3,7 +3,7 @@ ALTER TABLE Servicios AUTO_INCREMENT = 1;
 ALTER TABLE Paquetes AUTO_INCREMENT = 1;
 ALTER TABLE Servicios_Contratados AUTO_INCREMENT = 1;
 
-INSERT INTO Usuarios (nombre, apellido, email, contraseña_hash, estado_cuenta)
+INSERT INTO Usuarios (nombre, apellido, email, contrasena_hash, estado_cuenta)
 VALUES 
 ('Carlos', 'Mendoza', 'carlos.mendoza@example.com', 'hash1', 'activo'),
 ('Laura', 'Fernández', 'laura.fernandez@example.com', 'hash2', 'activo'),

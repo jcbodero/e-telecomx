@@ -35,10 +35,10 @@ services:
       - "4200:4200"
     restart: always
 
-  # simulador:
-  #   build: ./backend/infraestructura/simulador_usuarios
-  #   container_name: simulador-consumo
-  #   restart: always
+  simulador:
+    build: ./backend/infraestructura/simulador_usuarios
+    container_name: simulador-consumo
+    restart: always
 
   mysql:
     image: mysql:8.0

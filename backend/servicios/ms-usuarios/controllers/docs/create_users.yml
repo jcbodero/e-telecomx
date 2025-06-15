@@ -13,7 +13,7 @@ parameters:
         - nombre
         - apellido
         - email
-        - contraseña_hash
+        - contrasena_hash
         - estado_cuenta
       properties:
         nombre:
@@ -26,7 +26,7 @@ parameters:
           type: string
           format: email
           example: juan.perez@example.com
-        contraseña_hash:
+        contrasena_hash:
           type: string
           example: $2b$12$EjemploHashDePassword
         estado_cuenta:

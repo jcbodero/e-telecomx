@@ -7,7 +7,7 @@ API_URL = "http://host.docker.internal:5003/api/consumos/crear"
 
 CANT_USUARIOS = 20
 ID_SERVICIO = 20
-ID_PAQUETE = 60
+ID_PAQUETE = 20
 LIMITE_MB = 1024
 
 def generar_fecha_actual():
@@ -15,7 +15,7 @@ def generar_fecha_actual():
 
 def generar_consumo(id_usuario):
     for id_servicio in range(1, ID_SERVICIO + 1):  # del 1 al ID_SERVICIO inclusive
-        for id_paquete in range(41, ID_PAQUETE + 1): 
+        for id_paquete in range(1, ID_PAQUETE + 1): 
             try:
                 consumo = {
                     "id_usuario": id_usuario,
@@ -30,6 +30,7 @@ def generar_consumo(id_usuario):
                     print(f"[✓] Usuario {id_usuario}, Servicio {id_servicio} - OK")
                 else:
                     print(f"[✗] Usuario {id_usuario}, Servicio {id_servicio} - Error: {response.status_code}")
+               
             finally:
                 print("Error Servicio o Usuario")
 

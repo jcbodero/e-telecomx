@@ -29,6 +29,9 @@ def crear_consumo(data):
             data['limite_mb']
         ])
     except Exception as e :
+        conn.commit()
+        cursor.close()
+        conn.close()
         return jsonify({"error": f"Error inesperado: {str(e)}"}), 500
     finally:
         conn.commit()

@@ -7,7 +7,7 @@ BEGIN
         nombre,
         apellido,
         email,
-        contraseña_hash,
+        contrasena_hash,
         estado_cuenta,
         fecha_registro
     FROM Usuarios

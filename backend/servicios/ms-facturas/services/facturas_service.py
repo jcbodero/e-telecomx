@@ -14,14 +14,23 @@ def obtener_todos():
 
 def obtener_facturas_usuario(id_usuario):
     conn = get_db_connection()
+    cursor2 = conn.cursor(dictionary=True)
+    cursor2.callproc('sp_generar_factura_mensual',[id_usuario])
+    cursor2.stored_results()
+    conn.commit()
+
+    
     cursor = conn.cursor(dictionary=True)
     cursor.callproc('sp_obtener_cabeceras_factura_usuario',[id_usuario])
+
+   
 
     facturas = []
     for result_set in cursor.stored_results():
         facturas = result_set.fetchall()
 
     conn.close()
+    
     return facturas
 
 def obtener_detalle_por_id(id_factura):

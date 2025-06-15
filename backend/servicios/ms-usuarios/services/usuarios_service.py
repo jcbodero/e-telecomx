@@ -67,7 +67,7 @@ def crear_usuario(data):
         data['nombre'],
         data['apellido'],
         data['email'],
-        data['contraseña_hash'],
+        data['contrasena_hash'],
         data['estado_cuenta'],
         nuevo_id
     ]
